@@ -11,3 +11,6 @@ dependencies:
 test:
   override:
   - mvn -Dtest=SelenideDemo test
+  post:
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
