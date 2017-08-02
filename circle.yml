@@ -1,6 +1,5 @@
 general:
-  artifacts:
-   - "*/build/reports/tests/.*png"
+    - "/target/site/allure-maven-plugin/index.html"
 dependencies:
     pre:
     - curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -17,7 +16,3 @@ test:
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
-    - >
-      if [ -n "${RUN_NIGHTLY_BUILD}" ]; then
-       mvn -Dtest=SelenideDemo test
-      fi
