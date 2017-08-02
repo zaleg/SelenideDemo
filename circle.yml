@@ -16,5 +16,6 @@ test:
     - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
     - mkdir -p $CIRCLE_TEST_REPORTS/allure-results/
     - find . -type f -regex ".*/target/site/allure-maven-plugin/.*" -exec cp {} $CIRCLE_TEST_REPORTS/allure-results/ \;
-     artifacts:
-        - "/target/site/allure-maven-plugin/"
+general:
+  artifacts:
+        - "target/site/allure-maven-plugin"
