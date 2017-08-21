@@ -2,6 +2,7 @@ import com.codeborne.selenide.Configuration;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import com.codeborne.selenide.WebDriverRunner;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
@@ -20,7 +21,7 @@ public class SelenideDemo {
         $(By.name("Password")).setValue("incorrect_pass");
         $(By.xpath("//*[@id=\"user-login-form\"]//button")).click();
         // Error message validation
-        System.out.println("Browser window sixe is: " + WebDriverRunner.getWebDriver().manage().window().getSize());
+        System.out.println("Browser window size is: " + WebDriverRunner.getWebDriver().manage().window().getSize());
         $(By.className("error-text")).shouldHave(text("Неправильно вказано логін чи пароль. Спробуйте знову."));
     }
 }
