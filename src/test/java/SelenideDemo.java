@@ -20,6 +20,7 @@ public class SelenideDemo {
         $(By.name("Password")).setValue("incorrect_pass");
         $(By.xpath("//*[@id=\"user-login-form\"]//button")).click();
         // Error message validation
+        System.out.println("Browser window sixe is: " + WebDriverRunner.getWebDriver().manage().window().getSize());
         $(By.className("error-text")).shouldHave(text("Неправильно вказано логін чи пароль. Спробуйте знову."));
     }
 }
