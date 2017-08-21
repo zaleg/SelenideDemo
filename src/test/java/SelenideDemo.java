@@ -16,6 +16,7 @@ public class SelenideDemo {
         Configuration.browser = "chrome";
         // Setting start URL
         open("https://www.ukr.net/");
+        WebDriverRunner.getWebDriver().manage().window().setSize(new Dimension(1920, 1080));
         // Interaction with elements
         $(By.name("Login")).setValue("zaleg");
         $(By.name("Password")).setValue("incorrect_pass");
