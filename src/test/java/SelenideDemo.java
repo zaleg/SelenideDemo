@@ -3,6 +3,7 @@ import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import com.codeborne.selenide.WebDriverRunner;
+import org.openqa.selenium.Dimension;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
