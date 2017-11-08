@@ -1,9 +1,13 @@
+version: 2
+jobs:
+  test:
+      - $RUN_COMMAND
 workflows:
    version: 2
    nightly:
      triggers:
        - schedule:
-           cron: "20 22 * * *"
+           cron: "30 22 * * *"
            filters:
              branches:
                only:
