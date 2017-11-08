@@ -5,13 +5,13 @@ jobs:
      - $RUN_COMMAND
 workflows:
    version: 2
-   scheduled-workflow:
-     triggers:
-       - schedule:
-           cron: "05 23 * * *"
-           filters:
-             branches:
-               only:
-                 - master
+   nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
      jobs:
        - test
