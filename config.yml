@@ -6,6 +6,9 @@ jobs:
     
 workflows:
    version: 2
+   commit-workflow:
+    jobs:
+      - test
    scheduled-workflow:
      triggers:
        - schedule:
