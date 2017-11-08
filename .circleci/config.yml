@@ -13,4 +13,4 @@ workflows:
             branches:
               only: master
      jobs:
-       - test
+       - build
