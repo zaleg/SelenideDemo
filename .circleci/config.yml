@@ -1,8 +1,8 @@
 version: 2
 jobs:
-   build:
-     override:
-     - $RUN_COMMAND
+  build:
+    override:
+      - $RUN_COMMAND
 workflows:
    version: 2
    nightly:
