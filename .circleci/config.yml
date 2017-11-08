@@ -1,4 +1,8 @@
 version: 2
+jobs:
+   test:
+     override:
+     - $RUN_COMMAND
 workflows:
    version: 2
    scheduled-workflow:
