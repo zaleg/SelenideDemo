@@ -1,6 +1,6 @@
 version: 2
 jobs:
-   test:
+   build:
      override:
      - $RUN_COMMAND
 workflows:
