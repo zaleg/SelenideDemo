@@ -2,33 +2,14 @@ version: 2
 jobs:
   build:
     steps:
-      dependencies:
-        pre:
-        - curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-        - sudo dpkg -i google-chrome.deb
-        - sudo sed -i 's|HERE/chrome\"|HERE/chrome\" --disable-setuid-sandbox|g' /opt/google/chrome/google-chrome
-        - rm google-chrome.deb
-        post:
-          - wget https://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar
-          - java -jar selenium-server-standalone-3.4.0.jar:
-                background: true
-        test:
-          override:
-          - $RUN_COMMAND
-          post:
-            - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-            - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
-            - mkdir -p $CIRCLE_TEST_REPORTS/allure-results/
-            - find . -type f -regex ".*/target/site/allure-maven-plugin/.*" -exec cp {} $CIRCLE_TEST_REPORTS/allure-results/ \;
-general:
-  artifacts:
-        - "target/site/allure-maven-plugin"
+      - run: $RUN_COMMAND
+      
 workflows:
    version: 2
    nightly:
     triggers:
       - schedule:
-          cron: "50 9 * * *"
+          cron: "52 9 * * *"
           filters:
             branches:
               only: master
