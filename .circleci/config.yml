@@ -5,16 +5,12 @@ jobs:
     docker:
       - image: circleci/openjdk:8-jdk-browsers
     steps:
-      dependencies:
-        pre:
-        - curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-        - sudo dpkg -i google-chrome.deb
-        - sudo sed -i 's|HERE/chrome\"|HERE/chrome\" --disable-setuid-sandbox|g' /opt/google/chrome/google-chrome
-        - rm google-chrome.deb
-        post:
-          - wget https://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar
-          - java -jar selenium-server-standalone-3.4.0.jar:
-                background: true
+      - run: curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+      - run: sudo dpkg -i google-chrome.deb
+      - run: sudo sed -i 's|HERE/chrome\"|HERE/chrome\" --disable-setuid-sandbox|g' /opt/google/chrome/google-chrome
+      - run: rm google-chrome.deb
+      - run: wget https://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar
+      - run: java -jar selenium-server-standalone-3.4.0.jar: background: true
       - run: $RUN_COMMAND
 
 workflows:
@@ -22,7 +18,7 @@ workflows:
    nightly:
     triggers:
       - schedule:
-          cron: "04 10 * * *"
+          cron: "09 10 * * *"
           filters:
             branches:
               only: master
