@@ -1,6 +1,9 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/SelenideDemo
+    docker:
+      - image: circleci/openjdk:8-jdk-browsers
     steps:
       - run: $RUN_COMMAND
       
@@ -9,7 +12,7 @@ workflows:
    nightly:
     triggers:
       - schedule:
-          cron: "52 9 * * *"
+          cron: "58 9 * * *"
           filters:
             branches:
               only: master
