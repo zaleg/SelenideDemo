@@ -9,13 +9,17 @@ jobs:
       - restore_cache:
           key: ~/SelenideDemo-{{ checksum "pom.xml" }}
       - run: $RUN_COMMAND
+      - store_test_results:
+          path: target/surefire-reports
+      - store_artifacts:
+          path: target/site/allure-maven-plugin
 
 workflows:
    version: 2
    nightly:
     triggers:
       - schedule:
-          cron: "12 10 * * *"
+          cron: "21 10 * * *"
           filters:
             branches:
               only: master
