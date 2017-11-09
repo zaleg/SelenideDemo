@@ -19,7 +19,8 @@ workflows:
    nightly:
     triggers:
       - schedule:
-          cron: "21 10 * * *"
+          # 3am UTC 
+          cron: "00 03 * * *"
           filters:
             branches:
               only: master
