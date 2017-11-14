@@ -16,13 +16,16 @@ jobs:
 
 workflows:
    version: 2
+   commit:
+     jobs:
+      - build
    nightly:
-    triggers:
-      - schedule:
-          # 3am UTC 
+     triggers:
+       - schedule:
+          # 3am UTC
           cron: "00 03 * * *"
           filters:
             branches:
               only: master
-    jobs:
+     jobs:
        - build
