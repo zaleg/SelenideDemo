@@ -40,8 +40,8 @@ public class SelenideDemo {
     @Step("Message validation.")
     private void validateMessage() throws IOException {
         screenshot();
-        $(By.className("error-text")).shouldBe(visible)
-                .has(text("Неправильно вказано логін чи пароль. Спробуйте знову."));
+        $(By.className("error-text")).
+                shouldHave(text("Неправильно вказано логін чи пароль. Спробуйте знову."));
     }
 
     @Attachment(type = "image/png")
