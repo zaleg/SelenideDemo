@@ -20,27 +20,26 @@ public class SelenideDemo {
 
     @Description("Simple Selenide UI test.")
     @Test
-    public void ukrNetEmailBoxLoginTest () throws InterruptedException, IOException {
+    public void speedTestValidation () throws InterruptedException, IOException {
         // ChromeDriver initialization
         ChromeDriverManager.getInstance().setup();
         // Setting Browser type instead Firefox by default
         Configuration.browser = "chrome";
+        Configuration.timeout = 60000;
         // Setting start URL
-        open("https://www.ukr.net/");
+        open("http://beta.speedtest.net/");
         WebDriverRunner.getWebDriver().manage().window().setSize(new Dimension(1920, 1080));
         // Interaction with elements
-        $(By.name("Login")).setValue("zaleg");
-        $(By.name("Password")).setValue("incorrect_pass");
-        $(By.xpath("//*[@id=\"user-login-form\"]//button")).click();
-        // Error message validation
+        $(By.className("start-text")).click(); // Press 'GO'.
+        // Speedtest results validation
         System.out.println("Browser window size is: " + WebDriverRunner.getWebDriver().manage().window().getSize()); // test dimension changed.
-        validateMessage();
+        validateResults();
     }
 
     @Step("Message validation.")
-    private void validateMessage() throws IOException {
+    private void validateResults() throws IOException {
+        $(By.xpath("//*[@data-result-id='true']")).shouldBe(visible);
         screenshot();
-        $(By.className("error-text")).shouldBe(visible);
     }
 
     @Attachment(type = "image/png")
