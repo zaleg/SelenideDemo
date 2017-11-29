@@ -25,12 +25,12 @@ public class SelenideDemo {
         ChromeDriverManager.getInstance().setup();
         // Setting Browser type instead Firefox by default
         Configuration.browser = "chrome";
-        Configuration.timeout = 60000;
         // Setting start URL
         open("http://beta.speedtest.net/");
         WebDriverRunner.getWebDriver().manage().window().setSize(new Dimension(1920, 1080));
         // Interaction with elements
-        $(By.className("start-text")).click(); // Press 'GO'.
+        $(By.xpath("//*[@alt='Close']")).shouldBe(visible).click(); // close pop-up.
+        $(By.className("start-text")).shouldBe(visible).click(); // Press 'GO'.
         // Speedtest results validation
         System.out.println("Browser window size is: " + WebDriverRunner.getWebDriver().manage().window().getSize()); // test dimension changed.
         validateResults();
@@ -38,7 +38,7 @@ public class SelenideDemo {
 
     @Step("Message validation.")
     private void validateResults() throws IOException {
-        $(By.xpath("//*[@data-result-id='true']")).shouldBe(visible);
+        $(By.xpath("//*[@data-result-id='true']")).waitUntil(visible, 60000);
         screenshot();
     }
 
