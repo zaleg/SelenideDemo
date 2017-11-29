@@ -25,6 +25,7 @@ public class SelenideDemo {
         ChromeDriverManager.getInstance().setup();
         // Setting Browser type instead Firefox by default
         Configuration.browser = "chrome";
+        Configuration.timeout = 10000;
         // Setting start URL
         open("http://beta.speedtest.net/");
         WebDriverRunner.getWebDriver().manage().window().setSize(new Dimension(1920, 1080));
