@@ -30,6 +30,7 @@ public class SelenideDemo {
         open("http://beta.speedtest.net/");
         WebDriverRunner.getWebDriver().manage().window().setSize(new Dimension(1920, 1080));
         // Interaction with elements
+        refresh();
         $(By.xpath("//*[@alt='Close']")).shouldBe(visible).click(); // close pop-up.
         $(By.className("start-text")).shouldBe(visible).click(); // Press 'GO'.
         // Speedtest results validation
