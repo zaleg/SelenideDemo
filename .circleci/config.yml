@@ -13,6 +13,7 @@ jobs:
           path: target/surefire-reports
       - store_artifacts:
           path: target/site/allure-maven-plugin
+          path: build/reports/tests
 
 workflows:
    version: 2
