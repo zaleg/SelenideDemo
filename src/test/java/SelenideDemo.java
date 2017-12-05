@@ -39,7 +39,7 @@ public class SelenideDemo {
 
     @Step("Message validation.")
     private void validateResults() throws IOException {
-        $(By.xpath("//*[@data-result-id='true']")).waitUntil(visible, 60000);
+        $(By.xpath("//*[@data-result-id='true']")).waitUntil(visible, 80000);
         screenshot();
     }
 
