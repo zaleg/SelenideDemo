@@ -25,7 +25,7 @@ public class SelenideDemo {
         ChromeDriverManager.getInstance().setup();
         // Setting Browser type instead Firefox by default
         Configuration.browser = "chrome";
-        Configuration.timeout = 10000;
+        Configuration.timeout = 80000;
         // Setting start URL
         open("http://beta.speedtest.net/");
         WebDriverRunner.getWebDriver().manage().window().setSize(new Dimension(1920, 1080));
@@ -40,7 +40,7 @@ public class SelenideDemo {
 
     @Step("Message validation.")
     private void validateResults() throws IOException {
-        $(By.xpath("//*[@data-result-id='true']")).waitUntil(visible, 80000);
+        $(By.xpath("//*[@data-result-id='true']")).shouldBe(visible);
         screenshot();
     }
 
