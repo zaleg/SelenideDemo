@@ -32,7 +32,7 @@ public class SelenideDemoSpeedTests {
         // Interaction with elements
         refresh(); // refresh page to close pop-up.
         $(By.className("start-text")).shouldBe(visible).click(); // Press 'GO'.
-        //$("div.desktop-app-prompt-modal > div > a > svg > use").shouldBe(visible).click(); // close windows app pop-up.
+        $("div.desktop-app-prompt-modal > div > a > svg > use").shouldBe(visible).click(); // close windows app pop-up.
         // Speedtest results validation
         System.out.println("Browser window size is: " + WebDriverRunner.getWebDriver().manage().window().getSize()); // test dimension changed.
         validateResults();
