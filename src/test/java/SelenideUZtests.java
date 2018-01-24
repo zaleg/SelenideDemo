@@ -19,9 +19,9 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
 
 public class SelenideUZtests {
-    private static final String stationFrom = "Рівне";
-    private static final String stationTo = "Львів";
-    private static final int futureDays = 4;
+    private static final String stationFrom = "Rivne";
+    private static final String stationTo = "Lviv";
+    private static final int futureDays = 8;
 
     @Description("Booking train tickets UI test.")
     @Test
