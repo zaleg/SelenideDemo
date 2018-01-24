@@ -27,7 +27,7 @@ public class SelenideUZtests {
     @Test
     public void availableRailwayTicketsTest() throws InterruptedException, IOException {
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM.dd.yyyy");
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, futureDays);
         String date = dateFormat.format(calendar.getTime());
