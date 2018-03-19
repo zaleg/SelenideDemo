@@ -2,14 +2,13 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Screenshots;
 import com.google.common.io.Files;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
-import io.qameta.allure.Attachment;
-import io.qameta.allure.Description;
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.Dimension;
 import org.testng.annotations.Test;
-
+import ru.yandex.qatools.allure.annotations.Attachment;
+import ru.yandex.qatools.allure.annotations.Description;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,12 +28,19 @@ public class SelenideDemoSpeedTests {
         Configuration.timeout = 80000;
         // Setting start URL
         open("http://beta.speedtest.net/");
+        WebDriverRunner.getWebDriver().manage().window().setSize(new Dimension(1920, 1080));
+        // Interaction with elements
+        refresh(); // refresh page to close pop-up.
+        $(By.className("start-text")).shouldBe(visible).click(); // Press 'GO'.
+        $("div.desktop-app-prompt-modal > div > a > svg > use").shouldBe(visible).click(); // close windows app pop-up.
+        // Speedtest results validation
+        System.out.println("Browser window size is: " + WebDriverRunner.getWebDriver().manage().window().getSize()); // test dimension changed.
         validateResults();
     }
 
     @Step("Message validation.")
     private void validateResults() throws IOException {
-        $(By.className("start-text")).shouldBe(visible);
+        $(By.xpath("//*[@data-result-id='true']")).shouldBe(visible);
         screenshot();
     }
 
