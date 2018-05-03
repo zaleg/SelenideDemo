@@ -4,6 +4,7 @@ jobs:
     working_directory: ~/SelenideDemo
     docker:
       - image: circleci/openjdk:8-jdk-browsers
+    steps:
       - run: #STABLE
           name: Install Chromedriver latest version
           command: |
@@ -13,7 +14,6 @@ jobs:
             sudo dpkg -i google-chrome.deb
             sudo sed -i 's|HERE/chrome"|HERE/chrome" --no-sandbox|g' /opt/google/chrome/google-chrome
             rm google-chrome.deb
-    steps:
       - checkout
       - restore_cache:
           key: ~/SelenideDemo-{{ checksum "pom.xml" }}
