@@ -47,7 +47,7 @@ public class SelenideUZtests {
                 ".removeAttr('readonly')"); // make date input field editable.
         $(By.name("date-hover")).val(date).pressTab().click();
         $("td.current > a").click(); // select highlighted date from datepicker.
-        $(By.xpath("//button[@type='submit']")).click(); // Press search button.
+        $(By.xpath("(//button[@type='submit'])[2]")).click(); // Press search button.
         validateResults();
     }
 
