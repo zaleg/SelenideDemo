@@ -21,8 +21,6 @@ public class SelenideDemoSpeedTests {
     @Description("Speedtest UI test.")
     @Test
     public void speedTestValidation () throws InterruptedException, IOException {
-        // ChromeDriver initialization
-        ChromeDriverManager.getInstance().setup();
         // Setting Browser type instead Firefox by default
         Configuration.browser = "chrome";
         Configuration.timeout = 80000;
